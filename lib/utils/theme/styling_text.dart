@@ -12,6 +12,12 @@ TextStyle nunitoSansw400sz14 = GoogleFonts.nunitoSans(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal);
 
+TextStyle reemKufiw400sz14 = GoogleFonts.reemKufi(
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal);
+
 TextStyle nunitoSansw700sz12 = GoogleFonts.nunitoSans(
     color: Colors.white,
     fontSize: 12,

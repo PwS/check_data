@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class IDMNotifier with ChangeNotifier {
   ///Variable Input

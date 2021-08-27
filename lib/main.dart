@@ -1,4 +1,5 @@
 import 'package:check_data/state_management/idm_notifier.dart';
+import 'package:check_data/state_management/sign_up_notifier.dart';
 import 'package:check_data/ui/pages/auth/login_page.dart';
 import 'package:check_data/ui/pages/auth/sign_up_page.dart';
 import 'package:check_data/ui/pages/main_menu_page.dart';
@@ -13,6 +14,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (context) => Validation()),
       ChangeNotifierProvider(create: (context) => IDMNotifier()),
+      ChangeNotifierProvider(create: (context) => SignUpNotifier()),
     ],
     child: MyApp(),
   ));
