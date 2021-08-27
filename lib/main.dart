@@ -1,8 +1,9 @@
 import 'package:check_data/state_management/idm_notifier.dart';
+import 'package:check_data/state_management/main_task_notifier.dart';
 import 'package:check_data/state_management/sign_up_notifier.dart';
 import 'package:check_data/ui/pages/auth/login_page.dart';
 import 'package:check_data/ui/pages/auth/sign_up_page.dart';
-import 'package:check_data/ui/pages/main_menu_page.dart';
+import 'package:check_data/ui/pages/main_menu/main_menu_page.dart';
 import 'package:check_data/ui/pages/splash_page.dart';
 import 'package:check_data/utils/theme/theme.dart';
 import 'package:check_data/utils/utils.dart';
@@ -15,6 +16,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => Validation()),
       ChangeNotifierProvider(create: (context) => IDMNotifier()),
       ChangeNotifierProvider(create: (context) => SignUpNotifier()),
+      ChangeNotifierProvider(create: (context) => MainTaskNotifier()),
     ],
     child: MyApp(),
   ));

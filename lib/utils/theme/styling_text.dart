@@ -42,3 +42,10 @@ TextStyle robotow400sz12 = GoogleFonts.roboto(
   fontWeight: FontWeight.w400,
   fontStyle: FontStyle.normal,
 );
+
+TextStyle robotow400sz12ccwhite = GoogleFonts.roboto(
+  color: Colors.white,
+  fontSize: 12,
+  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.normal,
+);
