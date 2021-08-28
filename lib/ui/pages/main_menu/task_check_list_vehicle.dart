@@ -24,225 +24,367 @@ class _TaskCheckListVehicleState extends State<TaskCheckListVehicle> {
             body: Padding(
               padding: EdgeInsets.symmetric(
                   vertical: _sizeScreen.hp(4), horizontal: _sizeScreen.wp(10)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Text(
-                      'CHECK LIST KENDARAAN ${widget.pageTittle}',
-                      style: robotow400sz12.copyWith(
-                          fontSize: 16, color: Colors.white),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Text(
+                        'CHECK LIST KENDARAAN ${widget.pageTittle}',
+                        style: robotow400sz12.copyWith(
+                            fontSize: 16, color: Colors.white),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: _sizeScreen.hp(5),
-                  ),
-                  Container(
-                    color: Color(0xffC4C4C4),
-                    height: _sizeScreen.hp(8),
-                    width: _sizeScreen.wp(60),
-                    alignment: Alignment.center,
-                    child: Text(
-                      '${widget.subTittle}',
-                      style: robotow400sz12.copyWith(color: Colors.black),
+                    SizedBox(
+                      height: _sizeScreen.hp(5),
                     ),
-                  ),
-                  SizedBox(
-                    height: _sizeScreen.hp(5),
-                  ),
+                    Container(
+                      color: Color(0xffC4C4C4),
+                      height: _sizeScreen.hp(8),
+                      width: _sizeScreen.wp(60),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '${widget.subTittle}',
+                        style: robotow400sz12.copyWith(color: Colors.black),
+                      ),
+                    ),
+                    SizedBox(
+                      height: _sizeScreen.hp(5),
+                    ),
 
-                  ///TASKCHECKLIST
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'OLI MESIN',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                    ///TASKCHECKLIST
+                    Form(
+                      key: mainTask.globalTaskCheckListKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'OLI MESIN',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue:
+                                                    mainTask.idRadioOliMesin,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioOliMesin =
+                                                        data.text;
+                                                    mainTask.idRadioOliMesin =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'OLI POWER STEERING',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'OLI POWER STEERING',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue: mainTask
+                                                    .idRadioOliPowerSteering,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioOliPowerSteering =
+                                                        data.text;
+                                                    mainTask.idRadioOliPowerSteering =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'AIR RADIATOR',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'AIR RADIATOR',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue:
+                                                    mainTask.idRadioAirRadiator,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioAirRadioator =
+                                                        data.text;
+                                                    mainTask.idRadioAirRadiator =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'MINYAK REM',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'MINYAK REM',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue:
+                                                    mainTask.idRadioMinyakRem,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioMinyakRem =
+                                                        data.text;
+                                                    mainTask.idRadioMinyakRem =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'KOPLING',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'KOPLING',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue:
+                                                    mainTask.idRadioKopling,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioKopling =
+                                                        data.text;
+                                                    mainTask.idRadioKopling =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'ACCU',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              Radio(
-                                groupValue: null,
-                                value: null,
-                                onChanged: (Null? value) {},
-                              )
-                            ],
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'ACCU',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                Row(
+                                  children: mainTask.checkList
+                                      .map((data) => Container(
+                                          height: _sizeScreen.hp(10),
+                                          width: _sizeScreen.wp(18),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "${data.text}",
+                                                style: robotow400sz12ccwhite,
+                                              ),
+                                              Radio(
+                                                groupValue:
+                                                    mainTask.idRadioAccu,
+                                                value: data.index,
+                                                onChanged: (val) {
+                                                  setState(() {
+                                                    mainTask.radioAccu =
+                                                        data.text;
+                                                    mainTask.idRadioAccu =
+                                                        data.index;
+                                                  });
+                                                },
+                                              ),
+                                            ],
+                                          )))
+                                      .toList(),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: [
-                              Text(
-                                'BBM%',
-                                style: robotow400sz12ccwhite,
-                              ),
-                              Spacer(),
-                              SizedBox(
-                                width: _sizeScreen.wp(50),
-                                child: TextFormField(
-                                  controller: mainTask.controllerBBM,
-                                  keyboardType: TextInputType.number,
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  validator: (value) => Provider.of<Validation>(
-                                          context,
-                                          listen: false)
-                                      .stringValidation(value!),
-                                  style: nunitoSansw400sz12,
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.black,
-                                    filled: true,
-                                    hintText: 'BBM In Percentage (%)',
-                                    hintStyle: nunitoSansw400sz14,
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: OutlineInputBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        borderSide:
-                                            BorderSide(color: Colors.red)),
+                          Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  'BBM%',
+                                  style: robotow400sz12ccwhite,
+                                ),
+                                Spacer(),
+                                SizedBox(
+                                  width: _sizeScreen.wp(50),
+                                  child: TextFormField(
+                                    controller: mainTask.controllerBBM,
+                                    keyboardType: TextInputType.number,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (value) =>
+                                        Provider.of<Validation>(context,
+                                                listen: false)
+                                            .stringValidation(value!),
+                                    style: nunitoSansw400sz12,
+                                    decoration: InputDecoration(
+                                      fillColor: Colors.black,
+                                      filled: true,
+                                      hintText: 'BBM In Percentage (%)',
+                                      hintStyle: nunitoSansw400sz14,
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          borderSide:
+                                              BorderSide(color: Colors.red)),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: _sizeScreen.hp(10),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: _sizeScreen.wp(2)),
-                    child: Row(
-                      children: [
-                        ElevatedButton(
-                            onPressed: () => debugPrint('SUBMIT'),
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.all(0.0)),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xFE3AE25F)),
-                            ),
-                            child: Container(
-                              constraints: const BoxConstraints(
-                                  minWidth: 100.0, minHeight: 50.0),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'SUBMIT',
-                                style: robotow400sz12.copyWith(
-                                    color: Colors.black),
-                              ),
-                            )),
-                        Spacer(),
-                        ElevatedButton(
-                            onPressed: () => Navigator.pop(context),
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.all(0.0)),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Color(0xFE3AE25F)),
-                            ),
-                            child: Container(
-                              constraints: const BoxConstraints(
-                                  minWidth: 100.0, minHeight: 50.0),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'BACK',
-                                style: robotow400sz12.copyWith(
-                                    color: Colors.black),
-                              ),
-                            )),
-                      ],
+                    SizedBox(
+                      height: _sizeScreen.hp(10),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: _sizeScreen.wp(2)),
+                      child: Row(
+                        children: [
+                          ElevatedButton(
+                              onPressed: () =>
+                                  mainTask.submitFromTaskCheckList(),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.all(0.0)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFE3AE25F)),
+                              ),
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                    minWidth: 100.0, minHeight: 50.0),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'SUBMIT',
+                                  style: robotow400sz12.copyWith(
+                                      color: Colors.black),
+                                ),
+                              )),
+                          Spacer(),
+                          ElevatedButton(
+                              onPressed: () => Navigator.pop(context),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.all(0.0)),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFE3AE25F)),
+                              ),
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                    minWidth: 100.0, minHeight: 50.0),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'BACK',
+                                  style: robotow400sz12.copyWith(
+                                      color: Colors.black),
+                                ),
+                              )),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

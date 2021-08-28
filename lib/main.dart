@@ -5,9 +5,9 @@ import 'package:check_data/ui/pages/auth/login_page.dart';
 import 'package:check_data/ui/pages/auth/sign_up_page.dart';
 import 'package:check_data/ui/pages/main_menu/main_menu_page.dart';
 import 'package:check_data/ui/pages/splash_page.dart';
-import 'package:check_data/utils/theme/theme.dart';
 import 'package:check_data/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
