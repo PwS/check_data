@@ -1,6 +1,6 @@
 # check_data
 
-Flutter Project to Check vehicle Data
+Flutter Project to Check Vehicle Data ARFF
 
 ## Getting Started
 
