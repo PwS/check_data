@@ -1,3 +1,4 @@
+import 'package:check_data/state_management/hive_notifier.dart';
 import 'package:check_data/state_management/idm_notifier.dart';
 import 'package:check_data/state_management/main_task_notifier.dart';
 import 'package:check_data/state_management/sign_up_notifier.dart';
@@ -16,6 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => Validation()),
       ChangeNotifierProvider(create: (context) => IDMNotifier()),
       ChangeNotifierProvider(create: (context) => SignUpNotifier()),
+      ChangeNotifierProvider(create: (context) => HiveNotifier()),
       ChangeNotifierProvider(create: (context) => MainTaskNotifier()),
     ],
     child: MyApp(),

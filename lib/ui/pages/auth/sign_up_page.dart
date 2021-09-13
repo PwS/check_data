@@ -58,7 +58,7 @@ class SignUpPage extends StatelessWidget {
                                 decoration: InputDecoration(
                                   fillColor: Colors.black,
                                   filled: true,
-                                  hintText: 'Ketik UserName',
+                                  hintText: 'Ketik User Name',
                                   hintStyle: nunitoSansw400sz14,
                                   enabledBorder: InputBorder.none,
                                   focusedBorder: InputBorder.none,

@@ -13,10 +13,6 @@ class Screen {
     return percentage / 100 * screenSize.height;
   }
 
-  double getWidthPx(int pixels) {
-    return (pixels / 3.61) / 100 * screenSize.width;
-  }
-
   static bool isScreenLarge(double width, double pixel) {
     return width * pixel >= 1440;
   }
