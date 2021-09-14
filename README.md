@@ -2,8 +2,9 @@
 
 Flutter Project to Check Vehicle Data ARFF
 
-# Figma
-https://www.figma.com/file/Nh2cVrpHDjGZpnkXHZoGBZ/Data-Checklist?node-id=0%3A1
+## Figma
+
+[FIGMA](https://www.figma.com/file/Nh2cVrpHDjGZpnkXHZoGBZ/Data-Checklist?node-id=0%3A1) 
 
 ## Preview
 |<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.03.44.png" alt="LoginPage" width="300px" height="500px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.03.58.png" alt="SignUpPage" width="300px" height="500px" />
