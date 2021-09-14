@@ -40,8 +40,8 @@ class MainMenuPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              DetailMainMenuPage(pageTittle: 'COMMANDO CAR'))),
+                          builder: (context) => DetailMainMenuPage(
+                              pageTittle: Config.commandoCar))),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.all(0.0)),
@@ -64,8 +64,8 @@ class MainMenuPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              DetailMainMenuPage(pageTittle: 'OSHKOSH F1'))),
+                          builder: (context) => DetailMainMenuPage(
+                              pageTittle: Config.oshkoshF1))),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.all(0.0)),
@@ -89,7 +89,7 @@ class MainMenuPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => DetailMainMenuPage(
-                              pageTittle: 'AMBULANCE 01 Car'))),
+                              pageTittle: Config.ambulance01))),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.all(0.0)),

@@ -67,20 +67,40 @@ class _TaskCheckListVehicleState extends State<TaskCheckListVehicle> {
                     ),
 
                     ///TASKCHECKLIST
-                    Container(
-                      decoration: BoxDecoration(color: kPrimaryColor),
-                      height: _sizeScreen.hp(70),
-                      child: widget.subTittle.toUpperCase() ==
-                              Config.checkMachine.toUpperCase()
-                          ? CheckMachineForm()
-                          : widget.subTittle.toUpperCase() ==
-                                  Config.checkPhysical.toUpperCase()
-                              ? CheckPhysicalForm()
-                              : widget.subTittle.toUpperCase() ==
-                                      Config.checkMechanic.toUpperCase()
-                                  ? CheckMechanicForm()
-                                  : CheckElectricForm(),
-                    ),
+                    (widget.pageTittle == Config.commandoCar ||
+                            widget.pageTittle == Config.ambulance01)
+                        ? Container(
+                            decoration: BoxDecoration(color: kPrimaryColor),
+                            height: _sizeScreen.hp(72),
+                            child: widget.subTittle.toUpperCase() ==
+                                    Config.checkMachine.toUpperCase()
+                                ? CheckMachineForm()
+                                : widget.subTittle.toUpperCase() ==
+                                        Config.checkPhysical.toUpperCase()
+                                    ? CheckPhysicalForm()
+                                    : widget.subTittle.toUpperCase() ==
+                                            Config.checkMechanic.toUpperCase()
+                                        ? CheckMechanicForm()
+                                        : CheckElectricForm(),
+                          )
+                        : Container(
+                            decoration: BoxDecoration(color: kPrimaryColor),
+                            height: widget.subTittle.toUpperCase() ==
+                                    Config.dryChemicalPowderPart.toUpperCase()
+                                ? _sizeScreen.hp(40)
+                                : _sizeScreen.hp(75),
+                            child: widget.subTittle.toUpperCase() ==
+                                    Config.enginePart.toUpperCase()
+                                ? CheckEnginePart()
+                                : widget.subTittle.toUpperCase() ==
+                                        Config.pumpPart.toUpperCase()
+                                    ? CheckPumpPart()
+                                    : widget.subTittle.toUpperCase() ==
+                                            Config.dryChemicalPowderPart
+                                                .toUpperCase()
+                                        ? CheckDryChemicalPowderPart()
+                                        : CheckEquipmentPart(),
+                          ),
                     SizedBox(
                       height: _sizeScreen.hp(5),
                     ),

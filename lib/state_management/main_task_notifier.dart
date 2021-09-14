@@ -13,10 +13,15 @@ import 'package:logger/logger.dart';
 
 class MainTaskNotifier with ChangeNotifier {
   ///DECLAREVARIABLE
-  TextEditingController _controllerBBM = TextEditingController();
   GlobalKey<FormState> _globalTaskCheckListKey = new GlobalKey<FormState>();
 
   String _currentPage = '';
+
+  ///TextController
+  TextEditingController _controllerBBM = TextEditingController();
+  TextEditingController _controllerAirTangki = TextEditingController();
+  TextEditingController _controllerFoam = TextEditingController();
+  TextEditingController _controllerNozzleFoam = TextEditingController();
 
   ///Default Radio Button Check Mesin
   String? _radioOliMesin;
@@ -86,6 +91,58 @@ class MainTaskNotifier with ChangeNotifier {
   int? _idRadioLampuSein;
   int? _idRadioLampuRem;
 
+  ///Default Radio Button Bagian Engine
+  String? _radioOliTransmisi;
+  String? _radioTekananUdara;
+  String? _radioAirRadiator;
+
+  ///Group Value For Bagian Engine
+  int? _idOliTransmisi;
+  int? _idTekananUdara;
+  int? _idAirRadiator;
+
+  ///Default Radio Button Bagian Pompa
+  String? _radioMainValve;
+  String? _radioRoofTurret;
+  String? _radioBumperTurret;
+  String? _radioHouseReelKananKiri;
+
+  ///Group Value For Bagian Pompa
+  int? _idRadioMainValve;
+  int? _idRadioRoofTurret;
+  int? _idRadioBumperTurret;
+  int? _idRadioHouseReelKananKiri;
+
+  ///Default Radio Button Bagian Dry Chemical Powder
+  String? _radioDryChemicalPowder;
+  String? _radioHouseReelDcp;
+  String? _radioNitrogenGas;
+  String? _radioValve;
+
+  ///Group Value For Bagian Dry Chemical Powder
+  int? _idRadioDryChemicalPowder;
+  int? _idRadioHouseReelDcp;
+  int? _idRadioNitrogenGas;
+  int? _idRadioValve;
+
+  ///Default Radio Button Bagian Peralatan
+  String? _radioBajuPelindung;
+  String? _radioBaSet;
+  String? _radioKunciCoupling;
+  String? _radioHelmet;
+  String? _radioSepatu;
+  String? _radioPengganjalBan;
+  String? _radioTanduLipat;
+
+  ///Group Value For Bagian Peralatan
+  int? _idRadioBajuPelindung;
+  int? _idRadioBaSet;
+  int? _idRadioKunciCoupling;
+  int? _idRadioHelmet;
+  int? _idRadioSepatu;
+  int? _idRadioPengganjalBan;
+  int? _idRadioTanduLipat;
+
   final List<ModelRadioGroup> _checkList = [
     ModelRadioGroup(index: 1, text: "B"),
     ModelRadioGroup(index: 2, text: "TB"),
@@ -102,6 +159,12 @@ class MainTaskNotifier with ChangeNotifier {
 
   ///GETTER SETTER
   TextEditingController get controllerBBM => _controllerBBM;
+
+  TextEditingController get controllerAirTangki => _controllerAirTangki;
+
+  TextEditingController get controllerFoam => _controllerFoam;
+
+  TextEditingController get controllerNozzleFoam => _controllerNozzleFoam;
 
   GlobalKey<FormState> get globalTaskCheckListKey => _globalTaskCheckListKey;
 
@@ -478,31 +541,319 @@ class MainTaskNotifier with ChangeNotifier {
     notifyListeners();
   }
 
+  set controllerFoam(TextEditingController value) {
+    _controllerFoam = value;
+    notifyListeners();
+  }
+
+  String? get radioOliTransmisi => _radioOliTransmisi;
+
+  set radioOliTransmisi(String? value) {
+    _radioOliTransmisi = value;
+    notifyListeners();
+  }
+
+  String? get radioTekananUdara => _radioTekananUdara;
+
+  set radioTekananUdara(String? value) {
+    _radioTekananUdara = value;
+    notifyListeners();
+  }
+
+  String? get radioAirRadiator => _radioAirRadiator;
+
+  set radioAirRadiator(String? value) {
+    _radioAirRadiator = value;
+    notifyListeners();
+  }
+
+  int? get idOliTransmisi => _idOliTransmisi;
+
+  set idOliTransmisi(int? value) {
+    _idOliTransmisi = value;
+    notifyListeners();
+  }
+
+  int? get idTekananUdara => _idTekananUdara;
+
+  set idTekananUdara(int? value) {
+    _idTekananUdara = value;
+    notifyListeners();
+  }
+
+  int? get idAirRadiator => _idAirRadiator;
+
+  set idAirRadiator(int? value) {
+    _idAirRadiator = value;
+    notifyListeners();
+  }
+
+  String? get radioMainValve => _radioMainValve;
+
+  set radioMainValve(String? value) {
+    _radioMainValve = value;
+    notifyListeners();
+  }
+
+  String? get radioRoofTurret => _radioRoofTurret;
+
+  set radioRoofTurret(String? value) {
+    _radioRoofTurret = value;
+    notifyListeners();
+  }
+
+  String? get radioBumperTurret => _radioBumperTurret;
+
+  set radioBumperTurret(String? value) {
+    _radioBumperTurret = value;
+    notifyListeners();
+  }
+
+  String? get radioHouseReelKananKiri => _radioHouseReelKananKiri;
+
+  set radioHouseReelKananKiri(String? value) {
+    _radioHouseReelKananKiri = value;
+    notifyListeners();
+  }
+
+  int? get idRadioMainValve => _idRadioMainValve;
+
+  set idRadioMainValve(int? value) {
+    _idRadioMainValve = value;
+    notifyListeners();
+  }
+
+  int? get idRadioRoofTurret => _idRadioRoofTurret;
+
+  set idRadioRoofTurret(int? value) {
+    _idRadioRoofTurret = value;
+    notifyListeners();
+  }
+
+  int? get idRadioBumperTurret => _idRadioBumperTurret;
+
+  set idRadioBumperTurret(int? value) {
+    _idRadioBumperTurret = value;
+    notifyListeners();
+  }
+
+  int? get idRadioHouseReelKananKiri => _idRadioHouseReelKananKiri;
+
+  set idRadioHouseReelKananKiri(int? value) {
+    _idRadioHouseReelKananKiri = value;
+    notifyListeners();
+  }
+
+  String? get radioDryChemicalPowder => _radioDryChemicalPowder;
+
+  set radioDryChemicalPowder(String? value) {
+    _radioDryChemicalPowder = value;
+    notifyListeners();
+  }
+
+  String? get radioHouseReelDcp => _radioHouseReelDcp;
+
+  set radioHouseReelDcp(String? value) {
+    _radioHouseReelDcp = value;
+    notifyListeners();
+  }
+
+  String? get radioNitrogenGas => _radioNitrogenGas;
+
+  set radioNitrogenGas(String? value) {
+    _radioNitrogenGas = value;
+    notifyListeners();
+  }
+
+  String? get radioValve => _radioValve;
+
+  set radioValve(String? value) {
+    _radioValve = value;
+    notifyListeners();
+  }
+
+  int? get idRadioDryChemicalPowder => _idRadioDryChemicalPowder;
+
+  set idRadioDryChemicalPowder(int? value) {
+    _idRadioDryChemicalPowder = value;
+    notifyListeners();
+  }
+
+  int? get idRadioHouseReelDcp => _idRadioHouseReelDcp;
+
+  set idRadioHouseReelDcp(int? value) {
+    _idRadioHouseReelDcp = value;
+    notifyListeners();
+  }
+
+  int? get idRadioNitrogenGas => _idRadioNitrogenGas;
+
+  set idRadioNitrogenGas(int? value) {
+    _idRadioNitrogenGas = value;
+    notifyListeners();
+  }
+
+  int? get idRadioValve => _idRadioValve;
+
+  set idRadioValve(int? value) {
+    _idRadioValve = value;
+    notifyListeners();
+  }
+
+  String? get radioBajuPelindung => _radioBajuPelindung;
+
+  set radioBajuPelindung(String? value) {
+    _radioBajuPelindung = value;
+    notifyListeners();
+  }
+
+  String? get radioBaSet => _radioBaSet;
+
+  set radioBaSet(String? value) {
+    _radioBaSet = value;
+    notifyListeners();
+  }
+
+  String? get radioKunciCoupling => _radioKunciCoupling;
+
+  set radioKunciCoupling(String? value) {
+    _radioKunciCoupling = value;
+    notifyListeners();
+  }
+
+  String? get radioHelmet => _radioHelmet;
+
+  set radioHelmet(String? value) {
+    _radioHelmet = value;
+    notifyListeners();
+  }
+
+  String? get radioSepatu => _radioSepatu;
+
+  set radioSepatu(String? value) {
+    _radioSepatu = value;
+    notifyListeners();
+  }
+
+  String? get radioPengganjalBan => _radioPengganjalBan;
+
+  set radioPengganjalBan(String? value) {
+    _radioPengganjalBan = value;
+    notifyListeners();
+  }
+
+  String? get radioTanduLipat => _radioTanduLipat;
+
+  set radioTanduLipat(String? value) {
+    _radioTanduLipat = value;
+    notifyListeners();
+  }
+
+  int? get idRadioBajuPelindung => _idRadioBajuPelindung;
+
+  set idRadioBajuPelindung(int? value) {
+    _idRadioBajuPelindung = value;
+    notifyListeners();
+  }
+
+  int? get idRadioBaSet => _idRadioBaSet;
+
+  set idRadioBaSet(int? value) {
+    _idRadioBaSet = value;
+    notifyListeners();
+  }
+
+  int? get idRadioKunciCoupling => _idRadioKunciCoupling;
+
+  set idRadioKunciCoupling(int? value) {
+    _idRadioKunciCoupling = value;
+    notifyListeners();
+  }
+
+  int? get idRadioHelmet => _idRadioHelmet;
+
+  set idRadioHelmet(int? value) {
+    _idRadioHelmet = value;
+    notifyListeners();
+  }
+
+  int? get idRadioSepatu => _idRadioSepatu;
+
+  set idRadioSepatu(int? value) {
+    _idRadioSepatu = value;
+    notifyListeners();
+  }
+
+  int? get idRadioPengganjalBan => _idRadioPengganjalBan;
+
+  set idRadioPengganjalBan(int? value) {
+    _idRadioPengganjalBan = value;
+    notifyListeners();
+  }
+
+  int? get idRadioTanduLipat => _idRadioTanduLipat;
+
+  set idRadioTanduLipat(int? value) {
+    _idRadioTanduLipat = value;
+    notifyListeners();
+  }
+
   ///Function
   ///FIXME SUBMIT
   void submitFromTaskCheckList(String vehicle, String checkingVehicle) {
     if (_globalTaskCheckListKey.currentState!.validate() != false) {
-      ///Current Page is Check Mesin
-      logger.i('$vehicle - $checkingVehicle \n'
-          'Value For Oli Mesin ${this._idRadioOliMesin} ${this._radioOliMesin}\n'
-          'Value For Oli Power Steering ${this._idRadioOliPowerSteering} ${this._radioOliPowerSteering}\n'
-          'Value For Air Radiator ${this._idRadioAirRadiator} ${this._radioAirRadioator}\n'
-          'Value For Minyak Rem ${this._idRadioMinyakRem} ${this._radioMinyakRem}\n'
-          'Value For Kopling ${this._idRadioKopling} ${this._radioKopling}\n'
-          'Value For Accu ${this._idRadioAccu} ${this._radioAccu}\n'
-          'Value for BBM in % ${this._controllerBBM.text}');
+      _currentPage = '$vehicle-$checkingVehicle';
+      logger.i(
+          'Current Page is $vehicle with detail tasklist vehicle $checkingVehicle');
+
+      ///Check Current Page and Do Submit
+      ///TODO Store Data Into Hive
       switch (_currentPage) {
-        case Config.checkElectric:
-          debugPrint('Check Elektrik');
+        case '${Config.commandoCar}-${Config.checkMachine}':
+          logger.i('$vehicle - $checkingVehicle \n'
+              'Value For Oli Mesin ${this._idRadioOliMesin} ${this._radioOliMesin}\n'
+              'Value For Oli Power Steering ${this._idRadioOliPowerSteering} ${this._radioOliPowerSteering}\n'
+              'Value For Air Radiator ${this._idRadioAirRadiator} ${this._radioAirRadioator}\n'
+              'Value For Minyak Rem ${this._idRadioMinyakRem} ${this._radioMinyakRem}\n'
+              'Value For Kopling ${this._idRadioKopling} ${this._radioKopling}\n'
+              'Value For Accu ${this._idRadioAccu} ${this._radioAccu}\n'
+              'Value for BBM in % ${this._controllerBBM.text}');
           break;
-        case Config.checkMachine:
-          debugPrint('Check Machine');
+        case '${Config.commandoCar}-${(Config.checkPhysical)}':
+          debugPrint('Commando Car - Check Fisik');
           break;
-        case Config.checkMechanic:
-          debugPrint('Check Mekanik');
+        case '${Config.commandoCar}-${Config.checkMechanic}':
+          debugPrint('Commando Car - Check Mekanik');
+          break;
+        case '${Config.commandoCar}-${Config.checkElectric}':
+          debugPrint('Commando Car - Check Elektrik');
+          break;
+        case '${Config.oshkoshF1}-${Config.enginePart}':
+          debugPrint('Bagian Mesin');
+          break;
+        case '${Config.oshkoshF1}-${Config.pumpPart}':
+          debugPrint('Bagian Pompa');
+          break;
+        case '${Config.oshkoshF1}-${Config.dryChemicalPowderPart}':
+          debugPrint('Bagian Dry Chemical Powder');
+          break;
+        case '${Config.oshkoshF1}-${Config.equipmentPart}':
+          debugPrint('Bagian Perlengkapan');
+          break;
+        case '${Config.ambulance01}-${Config.checkMachine}':
+          debugPrint('Ambulance 01 - Check Mesin');
+          break;
+        case '${Config.ambulance01}-${Config.checkPhysical}':
+          debugPrint('Ambulance 01 - Check Fisik');
+          break;
+        case '${Config.ambulance01}-${Config.checkMechanic}':
+          debugPrint('Ambulance 01 - Check Mekanik');
+          break;
+        case '${Config.ambulance01}-${Config.checkElectric}':
+          debugPrint('Ambulance 01 - Check Elektrik');
           break;
         default:
-          debugPrint('Check Physical');
+          logger.e('Not Found');
       }
 
       /*Get.off(MainMenuPage());*/
