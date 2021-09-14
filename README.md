@@ -2,7 +2,7 @@
 
 Flutter Project to Check Vehicle Data ARFF
 
-#Figma
+# Figma
 https://www.figma.com/file/Nh2cVrpHDjGZpnkXHZoGBZ/Data-Checklist?node-id=0%3A1
 
 ## Preview
