@@ -19,25 +19,28 @@ class CheckDryChemicalPowderPartModelAdapter
     };
     return CheckDryChemicalPowderPartModel()
       ..id = fields[0] as int?
-      ..dryChemicalPowder = fields[1] as String?
-      ..houseReelDcp = fields[2] as String?
-      ..nitrogenGas = fields[3] as String?
-      ..valve = fields[4] as String?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..dryChemicalPowder = fields[2] as String?
+      ..houseReelDcp = fields[3] as String?
+      ..nitrogenGas = fields[4] as String?
+      ..valve = fields[5] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckDryChemicalPowderPartModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.dryChemicalPowder)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.houseReelDcp)
+      ..write(obj.dryChemicalPowder)
       ..writeByte(3)
-      ..write(obj.nitrogenGas)
+      ..write(obj.houseReelDcp)
       ..writeByte(4)
+      ..write(obj.nitrogenGas)
+      ..writeByte(5)
       ..write(obj.valve);
   }
 

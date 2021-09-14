@@ -34,9 +34,16 @@ class _ReportCheckListVehicleState extends State<ReportCheckListVehicle> {
                 height: _sizeScreen.hp(5),
               ),
 
-              ///CHECK LAPORAN
+              ///CHECK LAPORAN MESIN
               ElevatedButton(
-                  onPressed: () => debugPrint('Goto CHECK MESIN'),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailReport(
+                                value: Hive.box<CheckMachine>(Config.machineBox)
+                                    .values
+                                    .toString(),
+                              ))),
                   style: ButtonStyle(
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.all(0.0)),

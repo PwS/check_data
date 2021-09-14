@@ -18,34 +18,37 @@ class CheckPumpPartModelAdapter extends TypeAdapter<CheckPumpPartModel> {
     };
     return CheckPumpPartModel()
       ..id = fields[0] as int?
-      ..mainValve = fields[1] as String?
-      ..roofTurret = fields[2] as String?
-      ..bumperTurret = fields[3] as String?
-      ..tankWater = fields[4] as int?
-      ..foam = fields[5] as int?
-      ..houseReelRightAndLeft = fields[6] as String?
-      ..nozzleFoam = fields[7] as int?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..mainValve = fields[2] as String?
+      ..roofTurret = fields[3] as String?
+      ..bumperTurret = fields[4] as String?
+      ..tankWater = fields[5] as int?
+      ..foam = fields[6] as int?
+      ..houseReelRightAndLeft = fields[7] as String?
+      ..nozzleFoam = fields[8] as int?;
   }
 
   @override
   void write(BinaryWriter writer, CheckPumpPartModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.mainValve)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.roofTurret)
+      ..write(obj.mainValve)
       ..writeByte(3)
-      ..write(obj.bumperTurret)
+      ..write(obj.roofTurret)
       ..writeByte(4)
-      ..write(obj.tankWater)
+      ..write(obj.bumperTurret)
       ..writeByte(5)
-      ..write(obj.foam)
+      ..write(obj.tankWater)
       ..writeByte(6)
-      ..write(obj.houseReelRightAndLeft)
+      ..write(obj.foam)
       ..writeByte(7)
+      ..write(obj.houseReelRightAndLeft)
+      ..writeByte(8)
       ..write(obj.nozzleFoam);
   }
 

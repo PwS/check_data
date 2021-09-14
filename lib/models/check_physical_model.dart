@@ -8,31 +8,41 @@ class CheckPhysical extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///Body Kendaraan
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///Body Kendaraan
+  @HiveField(2)
   String? vehicleBody;
 
   ///Tekanan Ban
-  @HiveField(2)
+  @HiveField(3)
   String? tirePressure;
 
   ///Mur Roda
-  @HiveField(3)
+  @HiveField(4)
   String? wheelNut;
 
   ///Kaca Spion
-  @HiveField(4)
+  @HiveField(5)
   String? rearviewMirror;
 
   ///Tempat Perlengkapan
-  @HiveField(5)
+  @HiveField(6)
   String? equipmentPlace;
 
   ///Wiper
-  @HiveField(6)
+  @HiveField(7)
   String? wipers;
 
   ///Pintu
-  @HiveField(7)
+  @HiveField(8)
   String? doorVehicle;
+
+  @override
+  String toString() {
+    return 'CheckPhysical Value {id = $id ,vehicleCheckingType=$vehicleCheckingType , vehicleBody = $vehicleBody , tirePressure = $tirePressure , wheelNut =$wheelNut ,'
+        ' rearviewMirror=$rearviewMirror , equipmentPlace = $equipmentPlace , wipers = $wipers , doorVehicle = $doorVehicle} ';
+  }
 }

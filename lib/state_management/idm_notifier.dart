@@ -1,5 +1,10 @@
+import 'package:check_data/ui/pages/main_menu/main_menu_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
+
+import 'hive_notifier.dart';
 
 class IDMNotifier with ChangeNotifier {
   ///Variable Input
@@ -59,10 +64,13 @@ class IDMNotifier with ChangeNotifier {
 
   authenticationUser(BuildContext context) async {
     if (_globalLoginKey.currentState!.validate() != false) {
+      ///OpenAllBox
+      await Provider.of<HiveNotifier>(context, listen: false).openBox(context);
       loginProcess = true;
       _widgetEnable = false;
-
-      Navigator.pushNamed(context, '/mainMenu');
+      _controllerUserName.clear();
+      _controllerPassword.clear();
+      Get.off(() => MainMenuPage());
       loginProcess = false;
       _widgetEnable = true;
     } else {

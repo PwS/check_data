@@ -1,14 +1,17 @@
-import 'dart:ui';
-
 import 'package:check_data/model/model_radio_group.dart';
+import 'package:check_data/models/check_dry_chemical_powder_part_model.dart';
 import 'package:check_data/models/check_electric_model.dart';
+import 'package:check_data/models/check_engine_part_model.dart';
+import 'package:check_data/models/check_equipment_part_model.dart';
 import 'package:check_data/models/check_machine_model.dart';
 import 'package:check_data/models/check_mechanic_model.dart';
 import 'package:check_data/models/check_physical_model.dart';
+import 'package:check_data/models/check_pump_part_model.dart';
 import 'package:check_data/ui/pages/main_menu/main_menu_page.dart';
 import 'package:check_data/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:logger/logger.dart';
 
 class MainTaskNotifier with ChangeNotifier {
@@ -16,6 +19,8 @@ class MainTaskNotifier with ChangeNotifier {
   GlobalKey<FormState> _globalTaskCheckListKey = new GlobalKey<FormState>();
 
   String _currentPage = '';
+
+  int id = 0;
 
   ///TextController
   TextEditingController _controllerBBM = TextEditingController();
@@ -153,6 +158,11 @@ class MainTaskNotifier with ChangeNotifier {
   CheckMachine _checkMachine = CheckMachine();
   CheckMechanic _checkMechanic = CheckMechanic();
   CheckPhysical _checkPhysical = CheckPhysical();
+  CheckEnginePartModel _checkEnginePartModel = CheckEnginePartModel();
+  CheckPumpPartModel _checkPumpPartModel = CheckPumpPartModel();
+  CheckDryChemicalPowderPartModel _checkDryChemicalPowderPartModel =
+      CheckDryChemicalPowderPartModel();
+  CheckEquipmentPartModel _checkEquipmentPartModel = CheckEquipmentPartModel();
 
   ///Logger
   var logger = Logger();
@@ -799,64 +809,317 @@ class MainTaskNotifier with ChangeNotifier {
   }
 
   ///Function
-  ///FIXME SUBMIT
-  void submitFromTaskCheckList(String vehicle, String checkingVehicle) {
+  void submitFromTaskCheckList(
+      BuildContext context, String vehicle, String checkingVehicle) async {
     if (_globalTaskCheckListKey.currentState!.validate() != false) {
       _currentPage = '$vehicle-$checkingVehicle';
       logger.i(
           'Current Page is $vehicle with detail tasklist vehicle $checkingVehicle');
 
       ///Check Current Page and Do Submit
-      ///TODO Store Data Into Hive
       switch (_currentPage) {
         case '${Config.commandoCar}-${Config.checkMachine}':
-          logger.i('$vehicle - $checkingVehicle \n'
-              'Value For Oli Mesin ${this._idRadioOliMesin} ${this._radioOliMesin}\n'
-              'Value For Oli Power Steering ${this._idRadioOliPowerSteering} ${this._radioOliPowerSteering}\n'
-              'Value For Air Radiator ${this._idRadioAirRadiator} ${this._radioAirRadioator}\n'
-              'Value For Minyak Rem ${this._idRadioMinyakRem} ${this._radioMinyakRem}\n'
-              'Value For Kopling ${this._idRadioKopling} ${this._radioKopling}\n'
-              'Value For Accu ${this._idRadioAccu} ${this._radioAccu}\n'
-              'Value for BBM in % ${this._controllerBBM.text}');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkMachine.id = id++;
+          _checkMachine.vehicleCheckingType =
+              '${Config.commandoCar}-${Config.checkMachine}';
+          _checkMachine.machineOil =
+              '${this._idRadioOliMesin}-${this._radioOliMesin}';
+          _checkMachine.oilPowerSteering =
+              '${this._idRadioOliPowerSteering}-${this._radioOliPowerSteering}';
+          _checkMachine.airRadiator =
+              '${this._idRadioAirRadiator}-${this._radioAirRadioator}';
+          _checkMachine.brakeFluid =
+              '${this._idRadioMinyakRem}-${this._radioMinyakRem}';
+          _checkMachine.clutch =
+              '${this._idRadioKopling}-${this._radioKopling}';
+          _checkMachine.accu = '${this._idRadioAccu}-${this._radioAccu}';
+          _checkMachine.bbm = int.parse('${this._controllerBBM.text}');
+          logger.i(_checkMachine.toString());
+          await insertIntoHiveBox(context, Config.machineBox, _checkMachine);
           break;
         case '${Config.commandoCar}-${(Config.checkPhysical)}':
-          debugPrint('Commando Car - Check Fisik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkPhysical.id = id++;
+          _checkPhysical.vehicleCheckingType =
+              '${Config.commandoCar}-${Config.checkPhysical}';
+          _checkPhysical.vehicleBody =
+              '${this._idRadioBodyKendaraan}-${this._radioBodyKendaraan}';
+          _checkPhysical.tirePressure =
+              '${this._idRadioTekananBan}-${this._radioTekananBan}';
+          _checkPhysical.wheelNut =
+              '${this._idRadioMurRoda}-${this._radioMurRoda}';
+          _checkPhysical.rearviewMirror =
+              '${this._idRadioKacaSpion}-${this._radioKacaSpion}';
+          _checkPhysical.equipmentPlace =
+              '${this._idRadioTempatPerlengkapan}-${this._radioTempatPerlengkapan}';
+          _checkPhysical.wipers = '${this._idRadioWiper}-${this._radioWiper}';
+          _checkPhysical.doorVehicle =
+              '${this._idRadioPintu}-${this._idRadioPintu}';
+          logger.i(_checkPhysical.toString());
+          await insertIntoHiveBox(context, Config.physicalBox, _checkPhysical);
           break;
         case '${Config.commandoCar}-${Config.checkMechanic}':
-          debugPrint('Commando Car - Check Mekanik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkMechanic.id = id++;
+          _checkMechanic.vehicleCheckingType =
+              '${Config.commandoCar}-${Config.checkMechanic}';
+          _checkMechanic.oilLeak =
+              '${this._idRadioKebocoranOli}-${this.radioKebocoranOli}';
+          _checkMechanic.shiftHandle =
+              '${this.idRadioHandlePerseneling}-${this._radioHandlePerseneling}';
+          _checkMechanic.handBreak =
+              '${this._idRadioRemTangan}-${this._radioRemTangan}';
+          _checkMechanic.gasPedal =
+              '${this._idRadioPedalGas}-${this._radioPedalGas}';
+          _checkMechanic.clutchPedal =
+              '${this._idRadioPedalKopling}-${this._radioPedalKopling}';
+          _checkMechanic.machineHeating =
+              '${this._idRadioPemanasanMesin}-${this._radioPemanasanMesin}';
+          logger.i(_checkMechanic.toString());
+          await insertIntoHiveBox(context, Config.mechanicBox, _checkMechanic);
           break;
         case '${Config.commandoCar}-${Config.checkElectric}':
-          debugPrint('Commando Car - Check Elektrik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkElectric.id = id++;
+          _checkElectric.vehicleCheckingType =
+              '${Config.commandoCar}-${Config.checkElectric}';
+          _checkElectric.siren = '${this._idRadioSirine}-${this._radioSirine}';
+          _checkElectric.siren =
+              '${this._idRadioPengerasSuara}-${this._radioPengerasSuara}';
+          _checkElectric.siren =
+              '${this._idRadioKlakson}-${this._radioKlakson}';
+          _checkElectric.siren =
+              '${this._idRadioLampuDashboard}-${this._radioLampuDashBoard}';
+          _checkElectric.siren =
+              '${this._idRadioLampuKabin}-${this._radioLampuKabin}';
+          _checkElectric.siren =
+              '${this._idRadioLampuSein}-${this._radioLampuSein}';
+          _checkElectric.siren =
+              '${this._idRadioLampuRem}-${this._radioLampuRem}';
+          logger.i(_checkElectric.toString());
+          await insertIntoHiveBox(context, Config.electricBox, _checkElectric);
           break;
         case '${Config.oshkoshF1}-${Config.enginePart}':
-          debugPrint('Bagian Mesin');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkEnginePartModel.id = id++;
+          _checkEnginePartModel.vehicleCheckingType =
+              '${Config.oshkoshF1}-${Config.enginePart}';
+          _checkEnginePartModel.transmissionOil =
+              '${this._idOliTransmisi}-${this._radioOliTransmisi}';
+          _checkEnginePartModel.powerSteeringOil =
+              '${this._idRadioOliPowerSteering}-${this._radioOliPowerSteering}';
+          _checkEnginePartModel.bbm = int.parse('${this._controllerBBM.text}');
+          _checkEnginePartModel.airPressure =
+              '${this._idTekananUdara}-${this._radioTekananUdara}';
+          _checkEnginePartModel.tirePressure =
+              '${this._idRadioTekananBan}-${this._radioTekananBan}';
+          _checkEnginePartModel.airRadiator =
+              '${this._idRadioAirRadiator}-${this._radioAirRadiator}';
+          logger.i(_checkEnginePartModel.toString());
+          await insertIntoHiveBox(
+              context, Config.engineBox, _checkEnginePartModel);
           break;
         case '${Config.oshkoshF1}-${Config.pumpPart}':
-          debugPrint('Bagian Pompa');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkPumpPartModel.id = id++;
+          _checkPumpPartModel.vehicleCheckingType =
+              '${Config.oshkoshF1}-${Config.pumpPart}';
+          _checkPumpPartModel.mainValve =
+              '${this._idRadioMainValve}-${this._radioMainValve}';
+          _checkPumpPartModel.roofTurret =
+              '${this._idRadioRoofTurret}-${this._radioRoofTurret}';
+          _checkPumpPartModel.bumperTurret =
+              '${this._idRadioBumperTurret}-${this._radioBumperTurret}';
+          _checkPumpPartModel.tankWater =
+              int.parse('${this._controllerAirTangki.text}');
+          _checkPumpPartModel.foam = int.parse('${this._controllerFoam.text}');
+          _checkPumpPartModel.houseReelRightAndLeft =
+              '${this._idRadioHouseReelKananKiri}-${this._radioHouseReelKananKiri}';
+          _checkPumpPartModel.nozzleFoam =
+              int.parse('${this._controllerNozzleFoam.text}');
+          logger.i(_checkPumpPartModel.toString());
+          await insertIntoHiveBox(context, Config.pumpBox, _checkPumpPartModel);
           break;
         case '${Config.oshkoshF1}-${Config.dryChemicalPowderPart}':
-          debugPrint('Bagian Dry Chemical Powder');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkDryChemicalPowderPartModel.id = id++;
+          _checkDryChemicalPowderPartModel.vehicleCheckingType =
+              '${Config.oshkoshF1}-${Config.dryChemicalPowderPart}';
+          _checkDryChemicalPowderPartModel.dryChemicalPowder =
+              '${this._idRadioDryChemicalPowder}-${this._radioDryChemicalPowder}';
+          _checkDryChemicalPowderPartModel.houseReelDcp =
+              '${this._idRadioHouseReelDcp}-${this._radioHouseReelDcp}';
+          _checkDryChemicalPowderPartModel.nitrogenGas =
+              '${this._idRadioNitrogenGas}-${this._radioNitrogenGas}';
+          _checkDryChemicalPowderPartModel.valve =
+              '${this._idRadioValve}-${this._radioValve}';
+          logger.i(_checkDryChemicalPowderPartModel.toString());
+          await insertIntoHiveBox(
+              context, Config.dryChemicalPowderBox, _checkPumpPartModel);
           break;
         case '${Config.oshkoshF1}-${Config.equipmentPart}':
-          debugPrint('Bagian Perlengkapan');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkEquipmentPartModel.id = id++;
+          _checkEquipmentPartModel.vehicleCheckingType =
+              '${Config.oshkoshF1}-${Config.equipmentPart}';
+          _checkEquipmentPartModel.shieldClothing =
+              '${this._idRadioBajuPelindung}-${this._radioBajuPelindung}';
+          _checkEquipmentPartModel.baSet =
+              '${this._idRadioBaSet}-${this._radioBaSet}';
+          _checkEquipmentPartModel.couplingLock =
+              '${this._idRadioKunciCoupling}-${this._radioKunciCoupling}';
+          _checkEquipmentPartModel.helmet =
+              '${this._idRadioHelmet}-${this._radioHelmet}';
+          _checkEquipmentPartModel.shoes =
+              '${this._idRadioSepatu}-${this._radioSepatu}';
+          _checkEquipmentPartModel.foldingStretcher =
+              '${this._idRadioTanduLipat}-${this._radioTanduLipat}';
+          await insertIntoHiveBox(
+              context, Config.equipmentBox, _checkEquipmentPartModel);
           break;
         case '${Config.ambulance01}-${Config.checkMachine}':
-          debugPrint('Ambulance 01 - Check Mesin');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkMachine.id = id++;
+          _checkMachine.vehicleCheckingType =
+              '${Config.ambulance01}-${Config.checkMachine}';
+          _checkMachine.machineOil =
+              '${this._idRadioOliMesin}-${this._radioOliMesin}';
+          _checkMachine.oilPowerSteering =
+              '${this._idRadioOliPowerSteering}-${this._radioOliPowerSteering}';
+          _checkMachine.airRadiator =
+              '${this._idRadioAirRadiator}-${this._radioAirRadioator}';
+          _checkMachine.brakeFluid =
+              '${this._idRadioMinyakRem}-${this._radioMinyakRem}';
+          _checkMachine.clutch =
+              '${this._idRadioKopling}-${this._radioKopling}';
+          _checkMachine.accu = '${this._idRadioAccu}-${this._radioAccu}';
+          _checkMachine.bbm = int.parse('${this._controllerBBM.text}');
+          logger.i(_checkMachine.toString());
+          await insertIntoHiveBox(context, Config.machineBox, _checkMachine);
           break;
         case '${Config.ambulance01}-${Config.checkPhysical}':
-          debugPrint('Ambulance 01 - Check Fisik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkPhysical.id = id++;
+          _checkPhysical.vehicleCheckingType =
+              '${Config.ambulance01}-${Config.checkPhysical}';
+          _checkPhysical.vehicleBody =
+              '${this._idRadioBodyKendaraan}-${this._radioBodyKendaraan}';
+          _checkPhysical.tirePressure =
+              '${this._idRadioTekananBan}-${this._radioTekananBan}';
+          _checkPhysical.wheelNut =
+              '${this._idRadioMurRoda}-${this._radioMurRoda}';
+          _checkPhysical.rearviewMirror =
+              '${this._idRadioKacaSpion}-${this._radioKacaSpion}';
+          _checkPhysical.equipmentPlace =
+              '${this._idRadioTempatPerlengkapan}-${this._radioTempatPerlengkapan}';
+          _checkPhysical.wipers = '${this._idRadioWiper}-${this._radioWiper}';
+          _checkPhysical.doorVehicle =
+              '${this._idRadioPintu}-${this._idRadioPintu}';
+          logger.i(_checkPhysical.toString());
+          await insertIntoHiveBox(context, Config.physicalBox, _checkPhysical);
           break;
         case '${Config.ambulance01}-${Config.checkMechanic}':
-          debugPrint('Ambulance 01 - Check Mekanik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkMechanic.id = id++;
+          _checkMechanic.vehicleCheckingType =
+              '${Config.ambulance01}-${Config.checkMechanic}';
+          _checkMechanic.oilLeak =
+              '${this._idRadioKebocoranOli}-${this.radioKebocoranOli}';
+          _checkMechanic.shiftHandle =
+              '${this.idRadioHandlePerseneling}-${this._radioHandlePerseneling}';
+          _checkMechanic.handBreak =
+              '${this._idRadioRemTangan}-${this._radioRemTangan}';
+          _checkMechanic.gasPedal =
+              '${this._idRadioPedalGas}-${this._radioPedalGas}';
+          _checkMechanic.clutchPedal =
+              '${this._idRadioPedalKopling}-${this._radioPedalKopling}';
+          _checkMechanic.machineHeating =
+              '${this._idRadioPemanasanMesin}-${this._radioPemanasanMesin}';
+          logger.i(_checkMechanic.toString());
+          await insertIntoHiveBox(context, Config.mechanicBox, _checkMechanic);
           break;
         case '${Config.ambulance01}-${Config.checkElectric}':
-          debugPrint('Ambulance 01 - Check Elektrik');
+          logger.i('$vehicle - $checkingVehicle');
+          _checkElectric.id = id++;
+          _checkElectric.vehicleCheckingType =
+              '${Config.ambulance01}-${Config.checkElectric}';
+          _checkElectric.siren = '${this._idRadioSirine}-${this._radioSirine}';
+          _checkElectric.siren =
+              '${this._idRadioPengerasSuara}-${this._radioPengerasSuara}';
+          _checkElectric.siren =
+              '${this._idRadioKlakson}-${this._radioKlakson}';
+          _checkElectric.siren =
+              '${this._idRadioLampuDashboard}-${this._radioLampuDashBoard}';
+          _checkElectric.siren =
+              '${this._idRadioLampuKabin}-${this._radioLampuKabin}';
+          _checkElectric.siren =
+              '${this._idRadioLampuSein}-${this._radioLampuSein}';
+          _checkElectric.siren =
+              '${this._idRadioLampuRem}-${this._radioLampuRem}';
+          logger.i(_checkElectric.toString());
+          await insertIntoHiveBox(context, Config.electricBox, _checkElectric);
           break;
         default:
           logger.e('Not Found');
       }
+      _controllerBBM.clear();
+      _controllerAirTangki.clear();
+      _controllerFoam.clear();
+      _controllerNozzleFoam.clear();
+      Get.off(() => MainMenuPage());
+    }
+  }
 
-      /*Get.off(MainMenuPage());*/
+  Future<void> insertIntoHiveBox(
+      BuildContext context, String boxName, dynamic value) async {
+    logger.i('Starting Insert To BoxHive $boxName with values $value');
+    switch (boxName) {
+      case Config.machineBox:
+        logger.i('Start Insert');
+        Box<CheckMachine> machineBox =
+            Hive.box<CheckMachine>(Config.machineBox);
+        machineBox.add(value);
+        logger.i('Success Insert');
+        break;
+      case Config.physicalBox:
+        Box<CheckPhysical> physical =
+            Hive.box<CheckPhysical>(Config.physicalBox);
+        physical.add(value);
+        break;
+      case Config.mechanicBox:
+        Box<CheckMechanic> mechanic =
+            Hive.box<CheckMechanic>(Config.mechanicBox);
+        mechanic.add(value);
+        break;
+      case Config.electricBox:
+        Box<CheckElectric> electric =
+            Hive.box<CheckElectric>(Config.electricBox);
+        electric.add(value);
+        break;
+      case Config.engineBox:
+        Box<CheckEnginePartModel> enginePart =
+            Hive.box<CheckEnginePartModel>(Config.engineBox);
+        enginePart.add(value);
+        break;
+      case Config.pumpBox:
+        Box<CheckPumpPartModel> pumpPart =
+            Hive.box<CheckPumpPartModel>(Config.pumpBox);
+        pumpPart.add(value);
+        break;
+      case Config.dryChemicalPowderBox:
+        Box<CheckDryChemicalPowderPartModel> dryChemicalPowderPart =
+            Hive.box<CheckDryChemicalPowderPartModel>(
+                Config.dryChemicalPowderBox);
+        dryChemicalPowderPart.add(value);
+        break;
+      case Config.equipmentBox:
+        Box<CheckEquipmentPartModel> equipmentPart =
+            Hive.box<CheckEquipmentPartModel>(Config.equipmentBox);
+        equipmentPart.add(value);
+        break;
+      default:
+        logger.e('Box Not Found');
     }
   }
 }

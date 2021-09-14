@@ -8,31 +8,43 @@ class CheckElectric extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///Sirine
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///Sirine
+  @HiveField(2)
   String? siren;
 
   ///Pengeras Suara
-  @HiveField(2)
+  @HiveField(3)
   String? loudSpeaker;
 
   ///Klakson
-  @HiveField(3)
+  @HiveField(4)
   String? horn;
 
   ///Lampu Dashboard
-  @HiveField(4)
+  @HiveField(5)
   String? dashboardLight;
 
   ///Lampu Kabin
-  @HiveField(5)
+  @HiveField(6)
   String? cabinLight;
 
   ///Lampu Sein
-  @HiveField(6)
+  @HiveField(7)
   String? turnLight;
 
   ///Lampu Rem
-  @HiveField(7)
+  @HiveField(8)
   String? brakeLight;
+
+  @override
+  String toString() {
+    return 'CheckElectric Value {id = $id ,vehicleCheckingType=$vehicleCheckingType , siren = $siren ,'
+        ' loudSpeaker = $loudSpeaker , horn =$horn , '
+        'dashboardLight=$dashboardLight , cabinLight = $cabinLight , '
+        'turnLight = $turnLight , brakeLight = $brakeLight} ';
+  }
 }

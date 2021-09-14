@@ -18,34 +18,37 @@ class CheckPhysicalAdapter extends TypeAdapter<CheckPhysical> {
     };
     return CheckPhysical()
       ..id = fields[0] as int?
-      ..vehicleBody = fields[1] as String?
-      ..tirePressure = fields[2] as String?
-      ..wheelNut = fields[3] as String?
-      ..rearviewMirror = fields[4] as String?
-      ..equipmentPlace = fields[5] as String?
-      ..wipers = fields[6] as String?
-      ..doorVehicle = fields[7] as String?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..vehicleBody = fields[2] as String?
+      ..tirePressure = fields[3] as String?
+      ..wheelNut = fields[4] as String?
+      ..rearviewMirror = fields[5] as String?
+      ..equipmentPlace = fields[6] as String?
+      ..wipers = fields[7] as String?
+      ..doorVehicle = fields[8] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckPhysical obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.vehicleBody)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.tirePressure)
+      ..write(obj.vehicleBody)
       ..writeByte(3)
-      ..write(obj.wheelNut)
+      ..write(obj.tirePressure)
       ..writeByte(4)
-      ..write(obj.rearviewMirror)
+      ..write(obj.wheelNut)
       ..writeByte(5)
-      ..write(obj.equipmentPlace)
+      ..write(obj.rearviewMirror)
       ..writeByte(6)
-      ..write(obj.wipers)
+      ..write(obj.equipmentPlace)
       ..writeByte(7)
+      ..write(obj.wipers)
+      ..writeByte(8)
       ..write(obj.doorVehicle);
   }
 

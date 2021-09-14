@@ -19,34 +19,37 @@ class CheckEquipmentPartModelAdapter
     };
     return CheckEquipmentPartModel()
       ..id = fields[0] as int?
-      ..shieldClothing = fields[1] as String?
-      ..baSet = fields[2] as String?
-      ..CouplingLock = fields[3] as String?
-      ..helmet = fields[4] as String?
-      ..shoes = fields[5] as String?
-      ..tireBlocker = fields[6] as String?
-      ..foldingStretcher = fields[7] as String?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..shieldClothing = fields[2] as String?
+      ..baSet = fields[3] as String?
+      ..couplingLock = fields[4] as String?
+      ..helmet = fields[5] as String?
+      ..shoes = fields[6] as String?
+      ..tireBlocker = fields[7] as String?
+      ..foldingStretcher = fields[8] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckEquipmentPartModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.shieldClothing)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.baSet)
+      ..write(obj.shieldClothing)
       ..writeByte(3)
-      ..write(obj.CouplingLock)
+      ..write(obj.baSet)
       ..writeByte(4)
-      ..write(obj.helmet)
+      ..write(obj.couplingLock)
       ..writeByte(5)
-      ..write(obj.shoes)
+      ..write(obj.helmet)
       ..writeByte(6)
-      ..write(obj.tireBlocker)
+      ..write(obj.shoes)
       ..writeByte(7)
+      ..write(obj.tireBlocker)
+      ..writeByte(8)
       ..write(obj.foldingStretcher);
   }
 

@@ -8,31 +8,42 @@ class CheckPumpPartModel extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///MAIN VALVE
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///MAIN VALVE
+  @HiveField(2)
   String? mainValve;
 
   ///ROOF TURRET
-  @HiveField(2)
+  @HiveField(3)
   String? roofTurret;
 
   ///BUMPER TURRET
-  @HiveField(3)
+  @HiveField(4)
   String? bumperTurret;
 
   ///AIR TANGKI
-  @HiveField(4)
+  @HiveField(5)
   int? tankWater;
 
   ///FOAM
-  @HiveField(5)
+  @HiveField(6)
   int? foam;
 
   ///HOUSE REEL KANAN KIRI
-  @HiveField(6)
+  @HiveField(7)
   String? houseReelRightAndLeft;
 
   ///NOZZLE FOAM
-  @HiveField(7)
+  @HiveField(8)
   int? nozzleFoam;
+
+  @override
+  String toString() {
+    return 'CheckPumpPartModel Value {id = $id ,vehicleCheckingType=$vehicleCheckingType , mainValve = $mainValve , '
+        'roofTurret = $roofTurret , bumperTurret =$bumperTurret , tankWater=$tankWater , '
+        'foam = $foam , houseReelRightAndLeft = $houseReelRightAndLeft , nozzleFoam = $nozzleFoam} ';
+  }
 }

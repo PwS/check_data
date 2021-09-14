@@ -1,7 +1,9 @@
 import 'package:check_data/state_management/idm_notifier.dart';
+import 'package:check_data/ui/pages/auth/sign_up_page.dart';
 import 'package:check_data/utils/theme/theme.dart';
 import 'package:check_data/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,7 +22,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: _sizeScreen.hp(9),
+                    height: _sizeScreen.hp(8),
                   ),
                   Text(
                     'APLIKASI CHEKLIST DATA KENDARAAN ARFF',
@@ -177,8 +179,7 @@ class LoginPage extends StatelessWidget {
                                     width: _sizeScreen.wp(20),
                                   ),
                                   ElevatedButton(
-                                    onPressed: () =>
-                                        Navigator.pushNamed(context, '/signUp'),
+                                    onPressed: () => Get.to(() => SignUpPage()),
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
@@ -202,7 +203,6 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                        SizedBox(height: _sizeScreen.hp(4)),
                       ],
                     ),
                   ),

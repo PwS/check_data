@@ -8,31 +8,40 @@ class CheckMachine extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///Oli Mesin
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///Oli Mesin
+  @HiveField(2)
   String? machineOil;
 
   ///Oli Power Steering
-  @HiveField(2)
+  @HiveField(3)
   String? oilPowerSteering;
 
   ///Air Radiator
-  @HiveField(3)
+  @HiveField(4)
   String? airRadiator;
 
   ///Minyak Rem
-  @HiveField(4)
+  @HiveField(5)
   String? brakeFluid;
 
   ///Kopling
-  @HiveField(5)
+  @HiveField(6)
   String? clutch;
 
   ///Accu
-  @HiveField(6)
+  @HiveField(7)
   String? accu;
 
   ///BBM
-  @HiveField(7)
+  @HiveField(8)
   int? bbm;
+
+  @override
+  String toString() {
+    return 'CheckMachine Value {id = $id , vehicleCheckingType = $vehicleCheckingType , machineOil = $machineOil , oilPowerSteering = $oilPowerSteering , airRadiator =$airRadiator , brakeFluid=$brakeFluid , clutch = $clutch , accu = $accu , bbm = $bbm} ';
+  }
 }

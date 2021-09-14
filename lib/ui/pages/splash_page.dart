@@ -42,9 +42,6 @@ class _SplashPageState extends State<SplashPage> {
 
     ///Starting Offline Database
     Provider.of<HiveNotifier>(context, listen: false).initHive();
-
-    ///OpenAllBox
-    await Provider.of<HiveNotifier>(context, listen: false).openBox(context);
   }
 
   @override

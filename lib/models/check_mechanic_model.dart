@@ -8,27 +8,37 @@ class CheckMechanic extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///Kebocoran Oli
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///Kebocoran Oli
+  @HiveField(2)
   String? oilLeak;
 
   ///Handle Perseneling
-  @HiveField(2)
+  @HiveField(3)
   String? shiftHandle;
 
   ///Rem Tangan
-  @HiveField(3)
+  @HiveField(4)
   String? handBreak;
 
   ///Pedal Gas
-  @HiveField(4)
+  @HiveField(5)
   String? gasPedal;
 
   ///Pedal Kopling
-  @HiveField(5)
+  @HiveField(6)
   String? clutchPedal;
 
   ///Pemanasan Mesin
-  @HiveField(6)
+  @HiveField(7)
   String? machineHeating;
+
+  @override
+  String toString() {
+    return 'CheckMechanic Value {id = $id , vehicleCheckingType =$vehicleCheckingType , oilLeak = $oilLeak , shiftHandle = $shiftHandle , handBreak =$handBreak '
+        ', gasPedal=$gasPedal , clutchPedal = $clutchPedal , machineHeating = $machineHeating } ';
+  }
 }

@@ -1,8 +1,13 @@
+import 'package:check_data/models/check_machine_model.dart';
+import 'package:check_data/state_management/hive_notifier.dart';
 import 'package:check_data/state_management/main_task_notifier.dart';
 import 'package:check_data/ui/custom_widgets/custom_widgets.dart';
+import 'package:check_data/ui/pages/auth/login_page.dart';
+import 'package:check_data/ui/pages/main_menu/detail_report.dart';
 import 'package:check_data/utils/theme/theme.dart';
 import 'package:check_data/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 part 'detail_main_menu_page.dart';
@@ -127,6 +132,30 @@ class MainMenuPage extends StatelessWidget {
                     child: Text(
                       'LAPORAN',
                       style: robotow400sz12,
+                    ),
+                  )),
+              SizedBox(
+                height: _sizeScreen.hp(2.5),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Provider.of<HiveNotifier>(context, listen: false)
+                        .closeBox(context);
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                  style: ButtonStyle(
+                    padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.all(0.0)),
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  child: Container(
+                    constraints:
+                        const BoxConstraints(minWidth: 100.0, minHeight: 50.0),
+                    alignment: Alignment.center,
+                    child: Text(
+                      'LOGOUT',
+                      style: robotow400sz12.copyWith(color: Colors.white),
                     ),
                   ))
             ],

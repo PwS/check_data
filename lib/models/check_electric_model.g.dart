@@ -18,34 +18,37 @@ class CheckElectricAdapter extends TypeAdapter<CheckElectric> {
     };
     return CheckElectric()
       ..id = fields[0] as int?
-      ..siren = fields[1] as String?
-      ..loudSpeaker = fields[2] as String?
-      ..horn = fields[3] as String?
-      ..dashboardLight = fields[4] as String?
-      ..cabinLight = fields[5] as String?
-      ..turnLight = fields[6] as String?
-      ..brakeLight = fields[7] as String?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..siren = fields[2] as String?
+      ..loudSpeaker = fields[3] as String?
+      ..horn = fields[4] as String?
+      ..dashboardLight = fields[5] as String?
+      ..cabinLight = fields[6] as String?
+      ..turnLight = fields[7] as String?
+      ..brakeLight = fields[8] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckElectric obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.siren)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.loudSpeaker)
+      ..write(obj.siren)
       ..writeByte(3)
-      ..write(obj.horn)
+      ..write(obj.loudSpeaker)
       ..writeByte(4)
-      ..write(obj.dashboardLight)
+      ..write(obj.horn)
       ..writeByte(5)
-      ..write(obj.cabinLight)
+      ..write(obj.dashboardLight)
       ..writeByte(6)
-      ..write(obj.turnLight)
+      ..write(obj.cabinLight)
       ..writeByte(7)
+      ..write(obj.turnLight)
+      ..writeByte(8)
       ..write(obj.brakeLight);
   }
 

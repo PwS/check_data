@@ -8,31 +8,41 @@ class CheckEnginePartModel extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///Oli Mesin
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///Oli Mesin
+  @HiveField(2)
   String? machineOil;
 
   ///Oli Transmisi
-  @HiveField(2)
+  @HiveField(3)
   String? transmissionOil;
 
   ///Oli Power Steering
-  @HiveField(3)
+  @HiveField(4)
   String? powerSteeringOil;
 
   ///BBM
-  @HiveField(4)
+  @HiveField(5)
   int? bbm;
 
   ///TEKANAN UDARA
-  @HiveField(5)
+  @HiveField(6)
   String? airPressure;
 
   ///TEKANAN BAN
-  @HiveField(6)
+  @HiveField(7)
   String? tirePressure;
 
   ///AIR RADIATOR
-  @HiveField(7)
+  @HiveField(8)
   String? airRadiator;
+
+  @override
+  String toString() {
+    return 'CheckEnginePartModel Value {id = $id vehicleCheckingType=$vehicleCheckingType , machineOil = $machineOil , transmissionOil = $transmissionOil ,'
+        ' powerSteeringOil =$powerSteeringOil , bbm=$bbm , airPressure = $airPressure , tirePressure = $tirePressure , airRadiator = $airRadiator} ';
+  }
 }

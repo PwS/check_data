@@ -8,19 +8,29 @@ class CheckDryChemicalPowderPartModel extends HiveObject {
   @HiveField(0)
   int? id;
 
-  ///DRY CHEMICAL POWDER
+  ///VehicleType+CheckingType
   @HiveField(1)
+  String? vehicleCheckingType;
+
+  ///DRY CHEMICAL POWDER
+  @HiveField(2)
   String? dryChemicalPowder;
 
   ///HOUSE REEL DCP
-  @HiveField(2)
+  @HiveField(3)
   String? houseReelDcp;
 
   ///NITROGEN GAS
-  @HiveField(3)
+  @HiveField(4)
   String? nitrogenGas;
 
   ///VALVE
-  @HiveField(4)
+  @HiveField(5)
   String? valve;
+
+  @override
+  String toString() {
+    return 'CheckMachine CheckDryChemicalPowderPartModel {id = $id ,vehicleCheckingType=$vehicleCheckingType , dryChemicalPowder = $dryChemicalPowder ,'
+        ' houseReelDcp = $houseReelDcp , nitrogenGas =$nitrogenGas , valve=$valve } ';
+  }
 }

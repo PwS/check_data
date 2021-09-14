@@ -18,31 +18,34 @@ class CheckMechanicAdapter extends TypeAdapter<CheckMechanic> {
     };
     return CheckMechanic()
       ..id = fields[0] as int?
-      ..oilLeak = fields[1] as String?
-      ..shiftHandle = fields[2] as String?
-      ..handBreak = fields[3] as String?
-      ..gasPedal = fields[4] as String?
-      ..clutchPedal = fields[5] as String?
-      ..machineHeating = fields[6] as String?;
+      ..vehicleCheckingType = fields[1] as String?
+      ..oilLeak = fields[2] as String?
+      ..shiftHandle = fields[3] as String?
+      ..handBreak = fields[4] as String?
+      ..gasPedal = fields[5] as String?
+      ..clutchPedal = fields[6] as String?
+      ..machineHeating = fields[7] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckMechanic obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.oilLeak)
+      ..write(obj.vehicleCheckingType)
       ..writeByte(2)
-      ..write(obj.shiftHandle)
+      ..write(obj.oilLeak)
       ..writeByte(3)
-      ..write(obj.handBreak)
+      ..write(obj.shiftHandle)
       ..writeByte(4)
-      ..write(obj.gasPedal)
+      ..write(obj.handBreak)
       ..writeByte(5)
-      ..write(obj.clutchPedal)
+      ..write(obj.gasPedal)
       ..writeByte(6)
+      ..write(obj.clutchPedal)
+      ..writeByte(7)
       ..write(obj.machineHeating);
   }
 
