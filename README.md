@@ -1,16 +1,20 @@
-# check_data
+# CHECK_DATA_ARFF
 
 Flutter Project to Check Vehicle Data ARFF
 
-## Getting Started
+## Preview
+|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.03.44.png" alt="LoginPage" width="300px" height="500px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.03.58.png" alt="SignUpPage" width="300px" height="500px" />
+|:---:|:---:|
+|Login Page|Sign Up Page|
 
-This project is a starting point for a Flutter application.
+|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.10.png" alt="MainPage" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.18.png" alt="Commando Car" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.05.09.png" alt="OSHKOSH F1" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.17.17.png" alt="Ambulance 01" width="150px" height="350px" />
+|:---:|:---:|:---:|:---:|
+|Main Page|Check Kendaraan Commando Car|Check Kendaraan OSHKOSH F1|CHeck Kendaraan Ambulance 01|
 
-A few resources to get you started if this is your first Flutter project:
+|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.29.png" alt="Check Mesin" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.38.png" alt="Check Fisik" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.46.png" alt="Check Mekanik" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.04.54.png" alt="Check Elektrik" width="150px" height="350px" />
+|:---:|:---:|:---:|:---:|
+|Check Mesin|Check Fisik|Check Mekanik|Check Elektrik|
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.05.16.png" alt="Bagian Engine" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.05.22.png" alt="Bagian Pompa" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.05.29.png" alt="Bagian Dry Chemical Powder" width="150px" height="350px" />|<img src="https://raw.githubusercontent.com/PwS/check_data/master/images/Screen%20Shot%202021-09-14%20at%2017.05.34.png" alt="Bagian Peralatan" width="150px" height="350px" />
+|:---:|:---:|:---:|:---:|
+|Bagian Engine|Bagian Pompa|Bagian Dry Chemical Powder|Bagian Peralatan|
