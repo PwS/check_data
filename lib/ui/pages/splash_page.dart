@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/login');
     });
     super.initState();
     _makePathDir();
