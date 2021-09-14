@@ -17,32 +17,35 @@ class CheckMachineAdapter extends TypeAdapter<CheckMachine> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CheckMachine()
-      ..machineOil = fields[0] as String?
-      ..oilPowerSteering = fields[1] as String?
-      ..airRadiator = fields[2] as String?
-      ..brakeFluid = fields[3] as String?
-      ..clutch = fields[4] as String?
-      ..accu = fields[5] as String?
-      ..bbm = fields[6] as String?;
+      ..id = fields[0] as int?
+      ..machineOil = fields[1] as String?
+      ..oilPowerSteering = fields[2] as String?
+      ..airRadiator = fields[3] as String?
+      ..brakeFluid = fields[4] as String?
+      ..clutch = fields[5] as String?
+      ..accu = fields[6] as String?
+      ..bbm = fields[7] as int?;
   }
 
   @override
   void write(BinaryWriter writer, CheckMachine obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
-      ..write(obj.machineOil)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.oilPowerSteering)
+      ..write(obj.machineOil)
       ..writeByte(2)
-      ..write(obj.airRadiator)
+      ..write(obj.oilPowerSteering)
       ..writeByte(3)
-      ..write(obj.brakeFluid)
+      ..write(obj.airRadiator)
       ..writeByte(4)
-      ..write(obj.clutch)
+      ..write(obj.brakeFluid)
       ..writeByte(5)
-      ..write(obj.accu)
+      ..write(obj.clutch)
       ..writeByte(6)
+      ..write(obj.accu)
+      ..writeByte(7)
       ..write(obj.bbm);
   }
 
