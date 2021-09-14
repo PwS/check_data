@@ -4,31 +4,35 @@ part 'check_electric_model.g.dart';
 
 @HiveType(typeId: 0)
 class CheckElectric extends HiveObject {
-  ///Sirine
+  ///ID
   @HiveField(0)
+  int? id;
+
+  ///Sirine
+  @HiveField(1)
   String? siren;
 
   ///Pengeras Suara
-  @HiveField(1)
+  @HiveField(2)
   String? loudSpeaker;
 
   ///Klakson
-  @HiveField(2)
+  @HiveField(3)
   String? horn;
 
   ///Lampu Dashboard
-  @HiveField(3)
+  @HiveField(4)
   String? dashboardLight;
 
   ///Lampu Kabin
-  @HiveField(4)
+  @HiveField(5)
   String? cabinLight;
 
   ///Lampu Sein
-  @HiveField(5)
+  @HiveField(6)
   String? turnLight;
 
   ///Lampu Rem
-  @HiveField(6)
+  @HiveField(7)
   String? brakeLight;
 }

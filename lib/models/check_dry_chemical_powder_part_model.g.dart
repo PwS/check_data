@@ -18,23 +18,26 @@ class CheckDryChemicalPowderPartModelAdapter
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CheckDryChemicalPowderPartModel()
-      ..dryChemicalPowder = fields[0] as String?
-      ..houseReelDcp = fields[1] as String?
-      ..nitrogenGas = fields[2] as String?
-      ..valve = fields[3] as String?;
+      ..id = fields[0] as int?
+      ..dryChemicalPowder = fields[1] as String?
+      ..houseReelDcp = fields[2] as String?
+      ..nitrogenGas = fields[3] as String?
+      ..valve = fields[4] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckDryChemicalPowderPartModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.dryChemicalPowder)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.houseReelDcp)
+      ..write(obj.dryChemicalPowder)
       ..writeByte(2)
-      ..write(obj.nitrogenGas)
+      ..write(obj.houseReelDcp)
       ..writeByte(3)
+      ..write(obj.nitrogenGas)
+      ..writeByte(4)
       ..write(obj.valve);
   }
 

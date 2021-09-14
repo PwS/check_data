@@ -17,32 +17,35 @@ class CheckEnginePartModelAdapter extends TypeAdapter<CheckEnginePartModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CheckEnginePartModel()
-      ..machineOil = fields[0] as String?
-      ..transmissionOil = fields[1] as String?
-      ..powerSteeringOil = fields[2] as String?
-      ..bbm = fields[3] as int?
-      ..airPressure = fields[4] as String?
-      ..tirePressure = fields[5] as String?
-      ..airRadiator = fields[6] as String?;
+      ..id = fields[0] as int?
+      ..machineOil = fields[1] as String?
+      ..transmissionOil = fields[2] as String?
+      ..powerSteeringOil = fields[3] as String?
+      ..bbm = fields[4] as int?
+      ..airPressure = fields[5] as String?
+      ..tirePressure = fields[6] as String?
+      ..airRadiator = fields[7] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CheckEnginePartModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
-      ..write(obj.machineOil)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.transmissionOil)
+      ..write(obj.machineOil)
       ..writeByte(2)
-      ..write(obj.powerSteeringOil)
+      ..write(obj.transmissionOil)
       ..writeByte(3)
-      ..write(obj.bbm)
+      ..write(obj.powerSteeringOil)
       ..writeByte(4)
-      ..write(obj.airPressure)
+      ..write(obj.bbm)
       ..writeByte(5)
-      ..write(obj.tirePressure)
+      ..write(obj.airPressure)
       ..writeByte(6)
+      ..write(obj.tirePressure)
+      ..writeByte(7)
       ..write(obj.airRadiator);
   }
 

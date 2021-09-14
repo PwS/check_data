@@ -4,31 +4,35 @@ part 'check_physical_model.g.dart';
 
 @HiveType(typeId: 3)
 class CheckPhysical extends HiveObject {
-  ///Body Kendaraan
+  ///ID
   @HiveField(0)
+  int? id;
+
+  ///Body Kendaraan
+  @HiveField(1)
   String? vehicleBody;
 
   ///Tekanan Ban
-  @HiveField(1)
+  @HiveField(2)
   String? tirePressure;
 
   ///Mur Roda
-  @HiveField(2)
+  @HiveField(3)
   String? wheelNut;
 
   ///Kaca Spion
-  @HiveField(3)
+  @HiveField(4)
   String? rearviewMirror;
 
   ///Tempat Perlengkapan
-  @HiveField(4)
+  @HiveField(5)
   String? equipmentPlace;
 
   ///Wiper
-  @HiveField(5)
+  @HiveField(6)
   String? wipers;
 
   ///Pintu
-  @HiveField(6)
+  @HiveField(7)
   String? doorVehicle;
 }

@@ -4,27 +4,31 @@ part 'check_mechanic_model.g.dart';
 
 @HiveType(typeId: 2)
 class CheckMechanic extends HiveObject {
-  ///Kebocoran Oli
+  ///ID
   @HiveField(0)
+  int? id;
+
+  ///Kebocoran Oli
+  @HiveField(1)
   String? oilLeak;
 
   ///Handle Perseneling
-  @HiveField(1)
+  @HiveField(2)
   String? shiftHandle;
 
   ///Rem Tangan
-  @HiveField(2)
+  @HiveField(3)
   String? handBreak;
 
   ///Pedal Gas
-  @HiveField(3)
+  @HiveField(4)
   String? gasPedal;
 
   ///Pedal Kopling
-  @HiveField(4)
+  @HiveField(5)
   String? clutchPedal;
 
   ///Pemanasan Mesin
-  @HiveField(5)
+  @HiveField(6)
   String? machineHeating;
 }

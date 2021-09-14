@@ -4,31 +4,35 @@ part 'check_engine_part_model.g.dart';
 
 @HiveType(typeId: 4)
 class CheckEnginePartModel extends HiveObject {
-  ///Oli Mesin
+  ///ID
   @HiveField(0)
+  int? id;
+
+  ///Oli Mesin
+  @HiveField(1)
   String? machineOil;
 
   ///Oli Transmisi
-  @HiveField(1)
+  @HiveField(2)
   String? transmissionOil;
 
   ///Oli Power Steering
-  @HiveField(2)
+  @HiveField(3)
   String? powerSteeringOil;
 
   ///BBM
-  @HiveField(3)
+  @HiveField(4)
   int? bbm;
 
   ///TEKANAN UDARA
-  @HiveField(4)
+  @HiveField(5)
   String? airPressure;
 
   ///TEKANAN BAN
-  @HiveField(5)
+  @HiveField(6)
   String? tirePressure;
 
   ///AIR RADIATOR
-  @HiveField(6)
+  @HiveField(7)
   String? airRadiator;
 }
